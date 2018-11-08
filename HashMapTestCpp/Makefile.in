@@ -1,0 +1,6 @@
+CXX= g++
+CXXFLAGS= -Wall -Wno-unused-function -O3 -std=c++14
+WRAP_MALLOC=		-DUSE_MALLOC_WRAPPERS
+DFLAGS= -DHAVE_PTHREAD $(WRAP_MALLOC)
+OBJDIR=build
+SRCDIR=src
