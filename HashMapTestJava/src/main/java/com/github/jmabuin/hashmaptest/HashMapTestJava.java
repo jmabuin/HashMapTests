@@ -15,6 +15,10 @@ public class HashMapTestJava {
                 GuavaRunner guavaRunner = new GuavaRunner(newOptions);
                 guavaRunner.run();
                 break;
+            case NATIVE:
+                NativeRunner nativeRunner = new NativeRunner(newOptions);
+                nativeRunner.run();
+                break;
             default:
                 newOptions.printHelp();
                 break;

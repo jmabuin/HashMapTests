@@ -10,15 +10,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GuavaRunner {
+public class NativeRunner {
 
     private HashMapTestOptions options;
 
-    private HashMultimap<Integer, Location> map;
+    private HashMultiMapNative map;
 
-    public GuavaRunner(HashMapTestOptions options) {
+    public NativeRunner(HashMapTestOptions options) {
         this.options = options;
-        this.map = HashMultimap.create();
+        this.map = new HashMultiMapNative();
     }
 
     public void run() {
@@ -33,7 +33,7 @@ public class GuavaRunner {
         long endTime = System.nanoTime();
 
         System.out.println("Elapsed time in reading data: " + ((endTime - initTime) / 1e9) + " seconds");
-        System.out.println("Size of HashMap is: " + this.map.size());
+        System.out.println("Size of NativeMap is: " + this.map.size());
 
         initTime = System.nanoTime();
         this.access_data();
@@ -67,7 +67,7 @@ public class GuavaRunner {
 
                 for (int i = 0; i< values.size(); i+=2) {
                     //this.map.get(key).add(new Location(Integer.parseInt(values.get(i)), Integer.parseInt(values.get(i+1))));
-                    this.map.put(key, new Location(Integer.parseInt(values.get(i)), Integer.parseInt(values.get(i+1))));
+                    this.map.add(key, new Location(Integer.parseInt(values.get(i)), Integer.parseInt(values.get(i+1))));
                 }
 
                 partes.clear();
@@ -93,13 +93,14 @@ public class GuavaRunner {
         int random_list_item;
 
         List<Location> locations_list;
+        int[] locations_array;
 
         double result = 0.0;
 
         for (int i = 0; i< this.map.size(); ++i) {
             random_number = rand.nextInt(this.map.size());
-            random_list_item = rand.nextInt(this.map.get(random_number).size());
-            locations_list = new ArrayList<>(this.map.get(random_number));
+            random_list_item = rand.nextInt(this.map.get_list(random_number).size());
+            locations_list = new ArrayList<>(this.map.get_list(random_number));
             result = locations_list.get(random_list_item).targetId - result + locations_list.get(random_list_item).windowId;
             locations_list.clear();
         }

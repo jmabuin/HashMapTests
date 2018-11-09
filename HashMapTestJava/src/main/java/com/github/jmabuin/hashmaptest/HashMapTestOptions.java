@@ -60,6 +60,9 @@ public class HashMapTestOptions {
                         case "guava":
                             this.operation_mode = EnumModes.Mode.GUAVA;
                             break;
+                        case "native":
+                            this.operation_mode = EnumModes.Mode.NATIVE;
+                            break;
                         default:
                             this.operation_mode = EnumModes.Mode.HELP;
                             break;

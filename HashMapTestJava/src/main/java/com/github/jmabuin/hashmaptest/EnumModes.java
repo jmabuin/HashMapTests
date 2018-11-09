@@ -2,7 +2,7 @@ package com.github.jmabuin.hashmaptest;
 
 public class EnumModes {
 
-    public enum Mode { HASHMAP, GUAVA, HELP}
+    public enum Mode { HASHMAP, GUAVA, NATIVE, HELP}
 
 
 }

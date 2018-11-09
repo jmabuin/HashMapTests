@@ -1,0 +1,24 @@
+GCC = gcc
+CC = g++
+JAVAC = javac
+RMR = rm -Rf
+RM = rm -f
+
+MAKE = make
+LOCATION = `pwd`
+BUILD_DIR_HASHMULTIMAP = build_hashmultimap
+
+DIALECT = -std=c++11
+WARNINGS = -Wall -Wextra -Wpedantic
+
+# JAVA variables #######
+ifndef JAVA_HOME
+JAVA_HOME = /usr/lib/jvm/java
+JAVA_HOME_INCLUDES = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+else
+JAVA_HOME_INCLUDES = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+endif
+
+HASHMULTIMAP_FLAGS = $(DIALECT) -c -g $(WARNINGS) -O3 -fPIC $(JAVA_HOME_INCLUDES)
+LIBHASHMULTIMAP_FLAGS = -shared -O3 -o
+LIBMHASHMULTIMAP_LIBS =

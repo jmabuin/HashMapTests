@@ -57,7 +57,7 @@ public class HashMapRunner {
                 this.map.put(key, new ArrayList<Location>());
 
                 values.addAll(Arrays.asList(partes.get(1).split(";")));
-                System.out.println(key + ": Number of items " + values.size());
+                //System.out.println(key + ": Number of items " + values.size());
 
                 for (int i = 0; i< values.size(); i+=2) {
                     this.map.get(key).add(new Location(Integer.parseInt(values.get(i)), Integer.parseInt(values.get(i+1))));
